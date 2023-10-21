@@ -46,7 +46,7 @@ public class Food : MonoBehaviour
         
     }
 
-    public void addClothesDirty() 
+    private void addClothesDirty() 
     {
         transform.Rotate(new Vector3(0, 0, 100) * Time.deltaTime);
     }
