@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        Debug.Log("Сейчас моя масса имет значение"+ " " + _mass.Amount);
+        Debug.Log("Now my mass has a value:" + " " + _mass.Amount);
 
     }
 
@@ -48,12 +48,12 @@ public class PlayerMovement : MonoBehaviour
                 transform.localScale = new Vector3(_mass.Amount, _mass.Amount, _mass.Amount);
                 Destroy(collision.gameObject);
                 _countKill++;
-                Debug.Log($"Я скушал" + " " + _countKill + "-го врага и стал массы" + " " + _mass.Amount);
+                Debug.Log($"I ate enemy" + " " + _countKill + " " + "and became the masses:" + " " + _mass.Amount);
             }
             else
             {
                 Destroy(gameObject);
-                Debug.Log("Конец игры." + " " + "Иди качайся бычара.");
+                Debug.Log("Game over!" + " " + "Go swing the bull.");
             }
         }
 
