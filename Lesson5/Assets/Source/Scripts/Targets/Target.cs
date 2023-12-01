@@ -7,7 +7,7 @@ public class Target : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _counter;
     [SerializeField] private Transform _transform;
 
-    private void Awake()
+    private void Start()
     {
         _transform = GetComponent<Transform>();
     }
@@ -21,9 +21,19 @@ public class Target : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Ball>())
         {
-            _count++;
-            _counter.text = "Score: " + _count.ToString();
+            Counter();
             Destroy(collision.gameObject);
         }
+    }
+
+    private void Counter()
+    {
+        _count++;
+        _counter.text = "Score: " + _count.ToString();
+    }
+
+    public void SetCounter(TextMeshProUGUI textMeshPro)
+    {
+        _counter = textMeshPro;
     }
 }

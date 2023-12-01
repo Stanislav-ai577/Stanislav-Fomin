@@ -5,6 +5,7 @@ public class SpawnTargets : MonoBehaviour
 {
     [SerializeField] private Target _target;
     [SerializeField] private Transform _spawnerTargets;
+    [SerializeField] private TextMeshProUGUI _counter;
 
 
     private void Awake()
@@ -18,6 +19,7 @@ public class SpawnTargets : MonoBehaviour
         {
             Target target = Instantiate(_target, _spawnerTargets.position, Quaternion.identity).GetComponent<Target>();
             target.CreatedNewTarget(_spawnerTargets.position);
+            target.SetCounter(_counter);
         }
     }
 }
