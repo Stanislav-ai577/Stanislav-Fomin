@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class TargetSpawner : MonoBehaviour
 {
     [SerializeField] private TargetFactory _factory;
-
+    [SerializeField] private TextMeshProUGUI _counter;
     private void Awake()
     {
         StartCoroutine(SpawnTick());
