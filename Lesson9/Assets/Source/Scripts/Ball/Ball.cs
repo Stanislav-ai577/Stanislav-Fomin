@@ -13,12 +13,4 @@ public class Ball : MonoBehaviour
     {
         _rigidbody.AddForce(direction * force, ForceMode.Impulse);
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.GetComponent<Target>())
-        {
-            Destroy(gameObject);
-        }
-    }
 }
