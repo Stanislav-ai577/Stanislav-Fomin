@@ -7,11 +7,13 @@ public class Birds : MonoBehaviour
     [SerializeField] private Transform _shootPoint;
     private Rigidbody2D _rigidbody;
     private bool _isCanLaunch = false;
+    [SerializeField] private float _accelerate;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _rigidbody.isKinematic = true;
+        _accelerate = 3;
     }
 
     private void Update()
@@ -20,6 +22,7 @@ public class Birds : MonoBehaviour
         {
             transform.position = _shootPoint.position;
         }
+        Accelerate();
     }
 
     public void Setup(Transform shotPoint, Transform startPoint)
@@ -36,5 +39,13 @@ public class Birds : MonoBehaviour
         _isCanLaunch = false;
         _rigidbody.isKinematic = false;
         _rigidbody.AddForce(direction, ForceMode2D.Impulse);
+    }
+
+    private void Accelerate() 
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            _rigidbody.AddForce(_rigidbody.velocity * _accelerate, ForceMode2D.Impulse);
+        }
     }
 }
