@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(UnitFabric))]
@@ -49,6 +47,7 @@ public class UnitSpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(0.5f);
             unit.Move(Vector3.forward);
+            unit.ChangeColor();
         }
     }
 }

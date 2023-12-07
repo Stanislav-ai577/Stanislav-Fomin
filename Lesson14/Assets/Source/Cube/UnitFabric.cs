@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(MeshRenderer))] 
@@ -6,10 +5,12 @@ using UnityEngine;
 public class UnitFabric : MonoBehaviour
 {
     private Unit _unit;
+    private MeshRenderer _meshRenderer;
 
     private void Awake()
     {
         _unit = Resources.Load<Unit>("Unit");
+        _meshRenderer = GetComponent<MeshRenderer>();
     }
 
     public Unit CreateUnit(Vector3 position, Transform parent)
