@@ -15,9 +15,24 @@ public class Unit : MonoBehaviour
         _meshRenderer = GetComponent<MeshRenderer>();
     }
 
-    public void Move(Vector3 directiob)
+    public void Move(Vector3 direction)
     {
-        _rigidbody.AddForce(directiob * _speed, ForceMode.Impulse);
+        _rigidbody.AddForce(direction * _speed, ForceMode.Impulse);
+    }
+
+    public void MoveBack(Vector3 backDirection)
+    {
+        _rigidbody.AddForce(-backDirection * _speed, ForceMode.Impulse);
+    }
+
+    public void MoveRight(Vector3 rightDirection)
+    {
+        _rigidbody.AddForce(rightDirection * _speed, ForceMode.Impulse);
+    }
+
+    public void MoveLeft(Vector3 leftDirection)
+    {
+        _rigidbody.AddForce(leftDirection * _speed, ForceMode.Impulse);
     }
 
     public void ChangeColor()

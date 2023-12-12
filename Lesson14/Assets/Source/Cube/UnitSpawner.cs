@@ -33,7 +33,22 @@ public class UnitSpawner : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-            if(_moveTick != null)
+            _moveTick = StartCoroutine(MoveBackTick());
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            _moveTick = StartCoroutine(MoveRightTick());
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            _moveTick = StartCoroutine(MoveLeftTick());
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (_moveTick != null)
             {
                 StopCoroutine(_moveTick);
                 _moveTick = null;
@@ -45,8 +60,38 @@ public class UnitSpawner : MonoBehaviour
     {
         foreach(Unit unit in _units)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.1f);
             unit.Move(Vector3.forward);
+            unit.ChangeColor();
+        }
+    }
+
+    private IEnumerator MoveBackTick()
+    {
+        foreach (Unit unit in _units)
+        {
+            yield return new WaitForSeconds(0.1f);
+            unit.MoveBack(Vector3.forward);
+            unit.ChangeColor();
+        }
+    }
+
+    private IEnumerator MoveRightTick()
+    {
+        foreach (Unit unit in _units)
+        {
+            yield return new WaitForSeconds(0.1f);
+            unit.MoveBack(-Vector3.right);
+            unit.ChangeColor();
+        }
+    }
+
+    private IEnumerator MoveLeftTick()
+    {
+        foreach (Unit unit in _units)
+        {
+            yield return new WaitForSeconds(0.1f);
+            unit.MoveBack(-Vector3.left);
             unit.ChangeColor();
         }
     }
