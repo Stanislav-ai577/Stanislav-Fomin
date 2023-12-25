@@ -1,64 +1,71 @@
+using System;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rigidbody;
-    [SerializeField] private Rigidbody _forceRigidbody;
-    [SerializeField] private Mass _mass;
     [SerializeField] private float _speed;
-    private float _countKill;
-    [SerializeField] private float _force;
-
-    private void Start()
+    [SerializeField] private AmountMass _mass;
+    [SerializeField] private BackJumpAmount _backJumpMass;
+    [SerializeField] private int _countEnemy;
+    [SerializeField] private float _backHumpForce;
+    
+    private void Update()
     {
-        _rigidbody = GetComponent<Rigidbody>();
-        Debug.Log("Now my mass has a value:" + " " + _mass.Amount);
-
-    }
-
-    public void Update()
-    {
-        if(Input.GetKey(KeyCode.W)) 
+        if (Input.GetKey(KeyCode.W))
         {
-            _rigidbody.velocity = new Vector3(0, 0, _speed);
+            _rigidbody.velocity = new Vector3(0,0,_speed);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            _rigidbody.velocity = new Vector3(0, 0, -_speed);
+            _rigidbody.velocity = new Vector3(0,0,-_speed);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            _rigidbody.velocity = new Vector3(-_speed, 0, 0);
+            _rigidbody.velocity = new Vector3(-_speed,0,0);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            _rigidbody.velocity = new Vector3(_speed, 0, 0);
+            _rigidbody.velocity = new Vector3(_speed,0,0);
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        transform.localScale = new Vector3(_mass.Amount, _mass.Amount, _mass.Amount);
-
-        if (collision.gameObject.GetComponent<Mass>())
+        TransformScale();
+        
+        if (collision.gameObject.GetComponent<AmountMass>())
         {
-            if (_mass.Amount > collision.gameObject.GetComponent<Mass>().Amount)
+            if (_mass.Mass > collision.gameObject.GetComponent<AmountMass>().Mass)
             {
-                _mass.Amount += collision.gameObject.GetComponent<Mass>().Amount;
-                transform.localScale = new Vector3(_mass.Amount, _mass.Amount, _mass.Amount);
+                _mass.Mass += collision.gameObject.GetComponent<AmountMass>().Mass;
+                transform.localScale = new Vector3(_mass.Mass, _mass.Mass, _mass.Mass);
+                _countEnemy += 1;
+                Debug.Log("Я сьел " + _countEnemy + "-го врага" + " и стал массы " + _mass.Mass);
                 Destroy(collision.gameObject);
-                _countKill++;
-                Debug.Log($"I ate enemy" + " " + _countKill + " " + "and became the masses:" + " " + _mass.Amount);
             }
             else
             {
-                Destroy(gameObject);
-                Debug.Log("Game over!" + " " + "Go swing the bull.");
+                if (_mass.Mass < collision.gameObject.GetComponent<AmountMass>().Mass)
+                {
+                    Debug.Log("Иди качайся бычара!!");
+                    Destroy(_mass.gameObject);
+                }
             }
         }
+        
+        if (collision.gameObject.GetComponent<BackJumpAmount>())
+        {
+            if (_backJumpMass.BackJumpMass > collision.gameObject.GetComponent<BackJumpAmount>().BackJumpMass)
+            {
+               _backJumpMass.RigidbodyBackJump.AddForce(new Vector3(0,0,-_backHumpForce)); 
+            }
+        }
+    }
 
-        Vector3 normalVector = (collision.transform.position + transform.position).normalized;
-        _forceRigidbody.AddForce(normalVector * _force, ForceMode.Impulse);
-
+    private void TransformScale()
+    {
+        transform.localScale = new Vector3(_mass.Mass,_mass.Mass,_mass.Mass);
     }
 }
