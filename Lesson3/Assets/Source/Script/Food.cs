@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Food : MonoBehaviour
 {
+    [SerializeField] private float _speed;
+    [SerializeField] private GameObject _foodobj;
     private int _food, _eatFood;
     private float _dirt, _clean;
 
@@ -30,28 +32,26 @@ public class Food : MonoBehaviour
         addClothesDirty();
     }
 
-    private void TakeEat(int _yam, string _iEat, string _foodLeft) 
+    private void TakeEat(int yam, string iEat, string foodLeft) 
     {
-        _food = _food -_yam;
-        _eatFood = _yam;
-        Debug.Log($"" + _iEat + _eatFood + "%" + _foodLeft + _food + "%");
+        _food = _food - yam;
+        _eatFood = yam;
+        Debug.Log($"" + iEat + _eatFood + "%" + foodLeft + _food + "%");
     }
 
 
-    private void AddGettingClothesDirty(int _yami)
+    private void AddGettingClothesDirty(int yami)
     {
-        _dirt = _dirt + _yami;
-        _clean = _clean - _yami;  
+        _dirt = _dirt + yami;
+        _clean = _clean - yami;  
         Debug.Log($"I got dirty " +  _dirt + "% " + "clothes are clean on " + _clean + "%");
         
     }
 
     private void addClothesDirty() 
     {
-        transform.Rotate(new Vector3(0, 0, 100) * Time.deltaTime);
+        _foodobj.transform.Rotate(0,0,_speed, Space.Self);
     }
-
-
 }
 
 
