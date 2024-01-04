@@ -24,8 +24,3 @@ public class Example : MonoBehaviour
 
     }
 }
-
-public class Health
-{
-    public float Amount;
-}
