@@ -10,6 +10,11 @@ public class PlayerShoot : MonoBehaviour
    [SerializeField] private float _countBall;
    [SerializeField] private float _reloadDelay;
    [SerializeField] private bool _canShoot;
+   [SerializeField] private KeyCode _reload;
+   
+   
+   
+   
    
    private void Update()
    {
@@ -17,7 +22,7 @@ public class PlayerShoot : MonoBehaviour
        {
            StartCoroutine(ShooTick());
        }
-       if (Input.GetKeyDown(KeyCode.R) && _countBall == 0)
+       if (Input.GetKeyDown(_reload) && _countBall == 0)
        {
            _canShoot = false;
            StartCoroutine(ReloadTick());

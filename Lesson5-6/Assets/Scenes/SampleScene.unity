@@ -1306,6 +1306,7 @@ MonoBehaviour:
   _countBall: 5
   _reloadDelay: 1.5
   _canShoot: 1
+  _reload: 114
 --- !u!1 &1420989202
 GameObject:
   m_ObjectHideFlags: 0
