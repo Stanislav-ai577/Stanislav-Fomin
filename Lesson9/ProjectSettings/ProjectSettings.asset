@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 24
-  productGUID: 4d68081002e2c70478e8a0b7b9205791
+  productGUID: d4027c2ed9fecee4996679bd7b76d20d
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: Lesson5
+  productName: Lesson5P
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -720,10 +720,10 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: d14d279d-482d-4f52-818e-98a8fa6087ed
+  cloudProjectId: a41dc62f-f54e-4d2d-bba4-1264e827ec31
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Lesson5
+  projectName: Lesson5P 2023-12-25_19-05-19
   organizationId: unity_03e41587a97a4b4d9bb6
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0

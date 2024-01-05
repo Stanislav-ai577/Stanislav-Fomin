@@ -2,10 +2,21 @@ using UnityEngine;
 
 public class TargetScale : Target
 {
+    [SerializeField] private int _scaleTarget;
+    private CounterUI _counterTargetScale;
+    public override void CollisionTarget()
+    {
+        Counter();
+        transform.localScale = new Vector3(_scaleTarget, _scaleTarget, _scaleTarget);
+    }
+    
+    public virtual void SetCounterTargetScale(CounterUI counter)
+    {
+        _counterTargetScale = counter;
+    }
+
     public override void Counter()
     {
-        _count++;
-        _counter.text = "Score: " + _count.ToString();
-        transform.localScale += new Vector3(1, 1, 1);
+        _counterTargetScale.AddCount(1);
     }
 }
