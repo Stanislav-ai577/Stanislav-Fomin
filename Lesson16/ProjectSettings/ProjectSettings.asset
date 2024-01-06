@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 24
-  productGUID: c1788b3a71cd35e4ab7a7aeb61e1389e
+  productGUID: 707a846268b6fcc45b86ca593a302847
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: Lesson16W
+  productName: Lesson16
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -720,10 +720,10 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 2ed864ba-2a32-4b80-b227-8392c7c4231b
+  cloudProjectId: c421f6a9-b643-4fcd-9739-b0c4db045887
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Lesson16W 2023-12-15_19-33-10
+  projectName: Lesson16 2024-01-06_15-07-45
   organizationId: unity_03e41587a97a4b4d9bb6
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
