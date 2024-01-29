@@ -31,7 +31,8 @@ public class EntryPoint : MonoBehaviour
     {
         _enemySlime = Resources.Load<Enemy>("Slime");
         _enemyTurtle = Resources.Load<Enemy>("Turtle");
-        _player = Resources.Load<PlayerMovement>("Player");
+        _player = Resources.Load<PlayerMovement>("YBot");
+        //_player = Resources.Load<PlayerMovement>("YBot");
         _timer = Resources.Load<Timer>("Timer");
         _winWindow = Resources.Load<WinWindow>("WinWindow");
         _failWindow = Resources.Load<FailWindow>("FailWindow");
