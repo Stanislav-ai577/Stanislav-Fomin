@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
         Id = Random.Range(0, 100);
     }
 
-    public  void DeleteEnemy(int i)
+    public void Die(int i)
     {
         Destroy(gameObject);
     }
