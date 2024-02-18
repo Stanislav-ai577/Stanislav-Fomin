@@ -19,7 +19,7 @@ public class Storage : MonoBehaviour
         float distanceStorage = Vector3.Distance(_worker.position, _storage.position);
         if (distanceStorage == 0)
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 20; i++)
             {
                 ResourcesStorage.Add(_resource);
             }
