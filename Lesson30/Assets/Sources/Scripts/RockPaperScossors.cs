@@ -43,7 +43,7 @@ public class RockPaperScossors : MonoBehaviour
         _playerElementChoise = ElementChoise.Paper;
         Debug.Log("Вы выбрали: " + _playerElementChoise);
         
-        _rockButton.GameObject().SetActive(false);
+        _paperButton.GameObject().SetActive(false);
 
         StartCoroutine(ChooisePaperTick());
     }
@@ -53,7 +53,7 @@ public class RockPaperScossors : MonoBehaviour
         _playerElementChoise = ElementChoise.Scissors;
         Debug.Log("Вы выбрали: " + _playerElementChoise);
         
-        _rockButton.GameObject().SetActive(false);
+        _scissorsButton.GameObject().SetActive(false);
 
         StartCoroutine(ChooiseScissorsTick());
     }
@@ -104,17 +104,17 @@ public class RockPaperScossors : MonoBehaviour
                 if (_computerElementChoise == ElementChoise.Scissors)
                 {
                     Debug.Log("Вы проиграли");
-                    _rockButton.GameObject().SetActive(true);
+                    _paperButton.GameObject().SetActive(true);
                 }
                 else if (_computerElementChoise == ElementChoise.Paper)
                 {
                     Debug.Log("Ничья");
-                    _rockButton.GameObject().SetActive(true);
+                    _paperButton.GameObject().SetActive(true);
                 }
                 else if (_computerElementChoise == ElementChoise.Rock)
                 {
                     Debug.Log("Вы победили");
-                    _rockButton.GameObject().SetActive(true);
+                    _paperButton.GameObject().SetActive(true);
                 }
                 break;
         }
@@ -132,17 +132,17 @@ public class RockPaperScossors : MonoBehaviour
                 if (_computerElementChoise == ElementChoise.Scissors)
                 {
                     Debug.Log("Ничья");
-                    _rockButton.GameObject().SetActive(true);
+                    _scissorsButton.GameObject().SetActive(true);
                 }
                 else if (_computerElementChoise == ElementChoise.Paper)
                 {
                     Debug.Log("Вы победили");
-                    _rockButton.GameObject().SetActive(true);
+                    _scissorsButton.GameObject().SetActive(true);
                 }
                 else if (_computerElementChoise == ElementChoise.Rock)
                 {
                     Debug.Log("Вы проиграли");
-                    _rockButton.GameObject().SetActive(true);
+                    _scissorsButton.GameObject().SetActive(true);
                 }
                 break;
         }
