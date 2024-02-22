@@ -5,70 +5,79 @@ using UnityEngine;
 
 public class Worker : MonoBehaviour
 {
-   [field: SerializeField] public List<Resource> firstFactory = new List<Resource>();
-   [field: SerializeField] public List<Resource> secondFactory = new List<Resource>();
-   [SerializeField] private Transform _factoryPositionFirst;
-   [SerializeField] private Transform _factoryPositionSecond;
-   [SerializeField] private float _moveDuration;
-   [SerializeField] private Resource _resource;
+   [field: SerializeField] public List<Resource> WorkerResources = new List<Resource>();
+   [SerializeField] private Factory _factory;
+   [SerializeField] private Transform _firstFactoryPosition;
+   [SerializeField] private Transform _secondFactoryPosition;
    [SerializeField] private Transform _worker;
    [SerializeField] private Transform _storage;
+   [SerializeField] private float _moveDuration;
+   private float _firstFactoryCheck;
+   private int _resourcesCount;
 
    private void Start()
    {
-      StartCoroutine(WorkerMoveTick());
-      StartCoroutine(DinstanceTick());
+      WorkerMoveFirstFactory();
+      StartCoroutine(AddResourcesFirstFactoryTick());
+      StartCoroutine(WorkerMoveSecondFactoryTick());
    }
- 
-   private void DistanceChecker()
+
+   private void Update()
    {
-      float distanceFirstFactory = Vector3.Distance(_worker.position, _factoryPositionFirst.position);
-      if (distanceFirstFactory == 0)
-      {
-         for (int i = 0; i < 10; i++)
-         {
-            firstFactory.Add(_resource);
-         }
-      }
-      
-      float distanceSecondFactory = Vector3.Distance(_worker.position, _factoryPositionSecond.position);
-      if (distanceSecondFactory == 0)
-      {
-         for (int i = 0; i < 10; i++)
-         {
-            secondFactory.Add(_resource);
-         }
-      }
-      
-      float distanceStorage = Vector3.Distance(_worker.position, _storage.position);
-      if (distanceStorage == 0)
-      {
-         for (int i = 0; i < 10; i++)
-         {
-            firstFactory.Clear();
-            secondFactory.Clear();
-         }
-      }
+      DistanceFactoryCheker();
       
    }
 
-   private IEnumerator WorkerMoveTick()
+   private void DistanceFactoryCheker()
    {
-      transform.DOMove(_factoryPositionFirst.position, _moveDuration);
-      yield return new WaitForSeconds(5);
-      transform.DOMove(_factoryPositionSecond.position, _moveDuration);
-      yield return new WaitForSeconds(5);
-      transform.DOMove(_storage.position, _moveDuration);
+         float distanceFirstFactory = Vector3.Distance(_worker.position, _firstFactoryPosition.position);
+         _firstFactoryCheck = distanceFirstFactory;
    }
    
-   private IEnumerator DinstanceTick()
+   private void AddResourcesWorker()
    {
-      yield return new WaitForSeconds(5);
-      DistanceChecker();
-      yield return new WaitForSeconds(5);
-      DistanceChecker();
-      yield return new WaitForSeconds(5);
-      DistanceChecker();
+      WorkerResources.AddRange(_factory.FactoriesResources);
+      _resourcesCount = WorkerResources.Count;
+   }
 
+   private void WorkerMoveFirstFactory()
+   {
+      transform.DOMove(_firstFactoryPosition.position, _moveDuration);
+   }
+   
+   private IEnumerator AddResourcesFirstFactoryTick()
+   {
+      while (_resourcesCount < 10)
+      {
+            yield return new WaitForSeconds(1);
+            AddResourcesWorker();
+      }
+   }
+   
+   private IEnumerator AddResourcesSecondFactoryTick()
+   {
+      while (_resourcesCount < 20)
+      {
+         yield return new WaitForSeconds(1);
+         AddResourcesWorker();
+      }
+   }
+
+   private IEnumerator WorkerMoveSecondFactoryTick()
+   {
+      if (_firstFactoryCheck == 0)
+      {
+         yield return new WaitForSeconds(5);
+         transform.DOMove(_secondFactoryPosition.position, _moveDuration);
+         StartCoroutine(AddResourcesSecondFactoryTick());
+      }
+      yield return new WaitForSeconds(1);
+      StartCoroutine(WorkerMoveStorageTick());
+   }
+   
+   private IEnumerator WorkerMoveStorageTick()
+   {
+         yield return new WaitForSeconds(1);
+         transform.DOMove(_storage.position, _moveDuration);
    }
 }

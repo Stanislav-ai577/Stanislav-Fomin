@@ -155,14 +155,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e66898f6895f1f348af8e327de6f5e25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstFactory: []
-  secondFactory: []
-  _factoryPositionFirst: {fileID: 2130728011}
-  _factoryPositionSecond: {fileID: 1691240725}
-  _moveDuration: 5
-  _resource: {fileID: 8777692637498550753, guid: 4e9a422a85671ad43b79b594ffe0f7d7, type: 3}
+  WorkerResources: []
+  _factory: {fileID: 2130728010}
+  _firstFactoryPosition: {fileID: 2130728011}
+  _secondFactoryPosition: {fileID: 1691240725}
   _worker: {fileID: 592894239}
   _storage: {fileID: 809841277}
+  _moveDuration: 1
 --- !u!65 &592894236
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -377,8 +376,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ResourcesStorage: []
   _resource: {fileID: 8777692637498550753, guid: 4e9a422a85671ad43b79b594ffe0f7d7, type: 3}
-  _worker: {fileID: 592894239}
-  _storage: {fileID: 809841277}
 --- !u!136 &809841274
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -603,8 +600,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1594049e8c6c9a74e8f3a83cef3b8551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FactoriesResources: []
   _resource: {fileID: 8777692637498550753, guid: 4e9a422a85671ad43b79b594ffe0f7d7, type: 3}
-  _seconds: 10
+  _factory: {fileID: 1691240725}
+  _worker: {fileID: 592894239}
 --- !u!1 &2130728009
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,8 +633,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1594049e8c6c9a74e8f3a83cef3b8551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FactoriesResources: []
   _resource: {fileID: 8777692637498550753, guid: 4e9a422a85671ad43b79b594ffe0f7d7, type: 3}
-  _seconds: 10
+  _factory: {fileID: 2130728011}
+  _worker: {fileID: 592894239}
 --- !u!4 &2130728011
 Transform:
   m_ObjectHideFlags: 0
