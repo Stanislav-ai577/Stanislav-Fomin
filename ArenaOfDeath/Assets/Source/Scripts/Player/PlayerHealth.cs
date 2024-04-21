@@ -7,8 +7,14 @@ public class PlayerHealth : MonoBehaviour,IDamage
     [SerializeField] private float _health = 10f;
     [SerializeField] private Animator _animator;
     [SerializeField] private PauseService _pauseService;
+    private readonly int TakeHit = Animator.StringToHash("TakeHit");
     private bool _isDie = false;
-    
+
+    private void Awake()
+    {
+        _health = 10f;
+    }
+
     private void OnValidate()
     {
         _animator = GetComponent<Animator>();
@@ -28,6 +34,7 @@ public class PlayerHealth : MonoBehaviour,IDamage
             return;
 
         _health -= damage;
+        _animator.SetTrigger(TakeHit);
 
         if (_health <= 0)
         {

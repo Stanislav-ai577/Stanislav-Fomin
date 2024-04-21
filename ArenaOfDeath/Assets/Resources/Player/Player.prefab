@@ -344,6 +344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 10
   _animator: {fileID: 2747616904081341610}
+  _pauseService: {fileID: 0}
 --- !u!114 &2631825053327097026
 MonoBehaviour:
   m_ObjectHideFlags: 0

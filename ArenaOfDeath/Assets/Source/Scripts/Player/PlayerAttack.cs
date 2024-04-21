@@ -6,10 +6,10 @@ public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private PolygonCollider2D _attackArea;
     [SerializeField] private Animator _animator;
+    private readonly int OnAttack = Animator.StringToHash("Attack");
     private Coroutine _attackTick;
     private float _attackDelay = 0.5f;
     private bool _isAttack = true;
-    private readonly int OnAttack = Animator.StringToHash("Attack");
     [field: SerializeField] public int Damage { get; private set; }
 
     private void Awake()

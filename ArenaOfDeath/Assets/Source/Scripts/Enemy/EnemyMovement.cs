@@ -8,6 +8,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private Animator _animator;
     [SerializeField] private float _speed = 1.5f;
+    private readonly int Move = Animator.StringToHash("Move");
 
     private void OnValidate()
     {
@@ -28,8 +29,12 @@ public class EnemyMovement : MonoBehaviour
     private void Movement()
     {
         if (_player == null)
+        {
+            _animator.SetBool(Move, false);
             return;
-        
+        }
+
+        _animator.SetBool(Move, true);
         Vector2 targetPosition = _player.position;
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, _speed * Time.deltaTime);
     }

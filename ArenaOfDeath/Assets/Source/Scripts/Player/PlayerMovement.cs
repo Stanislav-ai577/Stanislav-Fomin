@@ -7,11 +7,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private float _speed = 2f;
+    private readonly int _animationMoveRight = Animator.StringToHash("Move");
+    private readonly int _animationMoveLeft = Animator.StringToHash("Move");
     private Vector2 _input;
     private bool _moveLeft;
     private bool _moveRight;
-    private readonly int _animationMoveRight = Animator.StringToHash("Move");
-    private readonly int _animationMoveLeft = Animator.StringToHash("Move");
 
     private void Awake()
     {
@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
         
         _input = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         _rigidbody.velocity = _input * _speed;
+        
         Flip();
         
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 public class Counter : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _text;
-    [SerializeField] private SaveService _saveService;
+    [SerializeField] private SaveService _saveService; 
     public int EnemyCount { get; private set; }
 
     private void Update()

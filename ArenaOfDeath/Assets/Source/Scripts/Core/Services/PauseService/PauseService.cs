@@ -11,9 +11,7 @@ public class PauseService : MonoBehaviour,IPause
         if (Input.GetKeyDown(KeyCode.Escape) && _isPause == false)
             Pause();
         else if (Input.GetKeyDown(KeyCode.Escape) && _isPause)
-        {
             Resume();
-        }
     }
 
     public void Pause()
