@@ -6,11 +6,17 @@ public class PlayerHealth : MonoBehaviour,IDamage
 {
     [SerializeField] private float _health = 10f;
     [SerializeField] private Animator _animator;
+    [SerializeField] private PauseService _pauseService;
     private bool _isDie = false;
     
     private void OnValidate()
     {
         _animator = GetComponent<Animator>();
+    }
+
+    public void Setup(PauseService pauseService)
+    {
+        _pauseService = pauseService;
     }
     
     public void TakeDamage(float damage)
@@ -24,7 +30,11 @@ public class PlayerHealth : MonoBehaviour,IDamage
         _health -= damage;
 
         if (_health <= 0)
-            Die();
+        {
+            Die(); 
+            _pauseService.Pause();
+        }
+        
     }
 
     private void Die()

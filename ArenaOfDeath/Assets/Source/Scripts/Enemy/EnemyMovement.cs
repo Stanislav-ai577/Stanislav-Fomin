@@ -27,6 +27,9 @@ public class EnemyMovement : MonoBehaviour
     
     private void Movement()
     {
+        if (_player == null)
+            return;
+        
         Vector2 targetPosition = _player.position;
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, _speed * Time.deltaTime);
     }

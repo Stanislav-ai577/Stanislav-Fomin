@@ -4,22 +4,35 @@ using UnityEngine;
 public class Counter : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _text;
-    private int _enemyCount;
-    
+    [SerializeField] private SaveService _saveService;
+    public int EnemyCount { get; private set; }
+
     private void Update()
     {
         UpdateKillCount();
     }
     
+    public void SaveCount()
+    {
+        _saveService.SaveCount(this);
+    }
+
+    public void LoadCount()
+    {
+        PlayerData data = _saveService.LoadCount();
+
+        EnemyCount = data.Count;
+    }
+    
     public void EnemyKillCount(int enemyCount)
     {
-        _enemyCount += enemyCount;
+        EnemyCount += enemyCount;
         UpdateKillCount();
     }
 
     private void UpdateKillCount()
     {
-        _text.text = _enemyCount.ToString();
+        _text.text = EnemyCount.ToString();
     }
-
+    
 }

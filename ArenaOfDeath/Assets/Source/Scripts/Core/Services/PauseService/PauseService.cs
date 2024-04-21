@@ -1,5 +1,3 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,17 +5,12 @@ public class PauseService : MonoBehaviour,IPause
 {
     [SerializeField] private GameObject _pausePanel;
     [SerializeField] private bool _isPause = false;
-
-    private void Start()
-    {
-        
-    }
-
+    
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && _isPause == false)
             Pause();
-        else if (Input.GetKeyDown(KeyCode.Escape) && _isPause == true)
+        else if (Input.GetKeyDown(KeyCode.Escape) && _isPause)
         {
             Resume();
         }
@@ -39,11 +32,13 @@ public class PauseService : MonoBehaviour,IPause
 
     public void LoadMenu()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene(0);
     }
 
     public void Restart()
     {
-        throw new System.NotImplementedException();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        _pausePanel.SetActive(false);
+        Time.timeScale = 1;
     }
 }

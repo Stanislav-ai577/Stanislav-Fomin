@@ -10,7 +10,7 @@ public class EnemyHealth : MonoBehaviour,IDamage
     [SerializeField] private Counter _counter;
     private float _dieTick = 2f;
     private bool _isDie;
-    [SerializeField]private int _enemyKillCount;
+    public int _enemyKillCount;
     private readonly int _onDie = Animator.StringToHash("Die");
 
     private void OnValidate()
@@ -28,7 +28,7 @@ public class EnemyHealth : MonoBehaviour,IDamage
     {
         _counter = counter;
     }
-
+    
     public void TakeDamage(float damage)
     {
         if (damage < 0)

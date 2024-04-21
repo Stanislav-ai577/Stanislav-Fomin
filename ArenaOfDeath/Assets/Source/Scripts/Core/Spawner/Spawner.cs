@@ -7,6 +7,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private Transform _enemySpawnPoint;
     [SerializeField] private Transform _playerSpawnPoint;
     [SerializeField] private Counter _counter;
+    [SerializeField] private PauseService _pauseService;
     private Transform _target;
     private Player _player;
     private Enemy _enemy;
@@ -34,6 +35,7 @@ public class Spawner : MonoBehaviour
     private void CreatedPlayer()
     {
         Player player = Instantiate(_player, _playerSpawnPoint.position, Quaternion.identity,_playerSpawnPoint.transform);
+        player.GetComponent<PlayerHealth>().Setup(_pauseService);
         _target = player.transform;
     }
     
