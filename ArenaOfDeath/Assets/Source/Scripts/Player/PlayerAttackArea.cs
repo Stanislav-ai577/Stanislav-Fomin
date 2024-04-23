@@ -6,9 +6,7 @@ public class PlayerAttackArea : MonoBehaviour
    
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.TryGetComponent(out EnemyHealth enemy))
-        {
-            enemy.TakeDamage(_playerAttack.Damage);
-        }
+        if (other.TryGetComponent(out IDamage damage))
+            damage.TakeDamage(_playerAttack.Damage);
     }
 }

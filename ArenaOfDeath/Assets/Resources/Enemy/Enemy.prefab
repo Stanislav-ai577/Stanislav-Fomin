@@ -79,7 +79,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: -1981757938, guid: 5530d75e36d8e014b886a31922004f45, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -212,6 +212,7 @@ MonoBehaviour:
   _health: 1
   _animator: {fileID: 1787510372620785460}
   _counter: {fileID: 3147156714501814439, guid: 95f73312bcb6c094eab53c0d5065ec75, type: 3}
+  _enemyKillCount: 0
 --- !u!114 &7944062681234462676
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -27,7 +27,6 @@ public class Counter : MonoBehaviour
     public void EnemyKillCount(int enemyCount)
     {
         EnemyCount += enemyCount;
-        UpdateKillCount();
     }
 
     private void UpdateKillCount()

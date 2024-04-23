@@ -11,9 +11,7 @@ public class EnemyAttack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.TryGetComponent(out PlayerHealth playerHealth))
-        {
-            playerHealth.TakeDamage(_damage);
-        }
+        if (other.TryGetComponent(out IDamage damage))
+            damage.TakeDamage(_damage);
     }
 }

@@ -41,9 +41,7 @@ public class EnemyHealth : MonoBehaviour,IDamage
         _health -= damage;
 
         if (_health <= 0)
-        {
             Die();
-        }
     }
     
     private void Die()
